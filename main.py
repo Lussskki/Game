@@ -1,8 +1,6 @@
 import pygame
 from settings import *
 from player import Player
-import math
-from map import world_map
 from ray_casting import ray_casting
 
 pygame.init()
