@@ -22,9 +22,17 @@ while True:
     ray_casting(sc, player.pos, player.angle)
 
     pygame.draw.circle(sc, GREEN, (int(player.x), int(player.y)), 12)
-    pygame.draw.line(sc, GREEN, player.pos, (player.x + WIDTH * math.cos(player.angle),
-                                             player.y + WIDTH * math.sin(player.angle)), 2)
     
+    # left green line
+    left_x = player.x + WIDTH * math.cos(player.angle - HALF_FOV)
+    left_y = player.y + WIDTH * math.sin(player.angle - HALF_FOV)
+    pygame.draw.line(sc, GREEN, player.pos, (int(left_x), int(left_y)), 2)
+
+    # right green line
+    right_x = player.x + WIDTH * math.cos(player.angle + HALF_FOV)
+    right_y = player.y + WIDTH * math.sin(player.angle + HALF_FOV)
+    pygame.draw.line(sc, GREEN, player.pos, (int(right_x), int(right_y)), 2)
+
     for x, y in world_map:
         pygame.draw.rect(sc, DARKGREY, (x, y, TILE, TILE), 2)
 
