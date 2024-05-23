@@ -15,26 +15,10 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit()
-    
     player.movement()        
     sc.fill(BLACK)
-
+    pygame.draw.rect(sc, SKYBLUE,(0, 0, WIDTH, HALF_HEIGHT))
+    pygame.draw.rect(sc, DARKGRAY, (0, HALF_HEIGHT, WIDTH, HALF_HEIGHT))
     ray_casting(sc, player.pos, player.angle)
-
-    pygame.draw.circle(sc, GREEN, (int(player.x), int(player.y)), 12)
-    
-    # left green line
-    left_x = player.x + WIDTH * math.cos(player.angle - HALF_FOV)
-    left_y = player.y + WIDTH * math.sin(player.angle - HALF_FOV)
-    pygame.draw.line(sc, GREEN, player.pos, (int(left_x), int(left_y)), 2)
-
-    # right green line
-    right_x = player.x + WIDTH * math.cos(player.angle + HALF_FOV)
-    right_y = player.y + WIDTH * math.sin(player.angle + HALF_FOV)
-    pygame.draw.line(sc, GREEN, player.pos, (int(right_x), int(right_y)), 2)
-
-    for x, y in world_map:
-        pygame.draw.rect(sc, DARKGREY, (x, y, TILE, TILE), 2)
-
     pygame.display.flip()
     clock.tick(FPS)
