@@ -9,6 +9,7 @@ HALF_HEIGHT = HEIGHT // 2
 
 FPS = 60
 TILE = 65
+FPS_POS = (WIDTH - 65, 5)
 
 # Ray casting settings
 FOV = math.pi / 3
