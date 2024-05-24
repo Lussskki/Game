@@ -2,12 +2,14 @@ import pygame
 from settings import *
 from player import Player
 from ray_casting import ray_casting
+from drawing import Drawing
 
 pygame.init()
 
 sc = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
 player = Player()
+drawing = Drawing(sc)
 
 while True:
     for event in pygame.event.get():
@@ -15,8 +17,9 @@ while True:
             exit()
     player.movement()        
     sc.fill(BLACK)
-    pygame.draw.rect(sc, SKYBLUE,(0, 0, WIDTH, HALF_HEIGHT))
-    pygame.draw.rect(sc, DARKGRAY, (0, HALF_HEIGHT, WIDTH, HALF_HEIGHT))
-    ray_casting(sc, player.pos, player.angle)
+
+    drawing.background()
+    drawing.world(player.pos, player.angle)
+    drawing.fps(clock)
     pygame.display.flip()
-    clock.tick(FPS)
+    clock.tick()
