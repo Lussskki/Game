@@ -14,7 +14,7 @@ class Player:
         if (int(x // TILE) * TILE, int(y // TILE) * TILE) not in world_map:
             return False
         return True
-    def movement(self):
+    def movement(self, delta_time):
         keys = pygame.key.get_pressed()
         sin_a = math.sin(self.angle)
         cos_a = math.cos(self.angle)

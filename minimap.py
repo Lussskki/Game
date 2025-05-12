@@ -34,4 +34,4 @@ def draw_minimap(screen, player_pos, player_angle):
     pygame.draw.line(minimap_surface, (255, 0, 0), (px, py), (px + dx, py + dy), 2)
 
     # Blit to top-right corner
-    screen.blit(minimap_surface, (screen.get_width() - minimap_width - 500, 350))
+    screen.blit(minimap_surface, (screen.get_width() - minimap_width - 600, 410))
