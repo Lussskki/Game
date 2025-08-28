@@ -16,19 +16,18 @@ def ray_casting(sc, player_pos, player_angle):
             y = yo + depth * sin_a
 
             if (int(x // TILE) * TILE, int(y // TILE) * TILE) in world_map:
-                # Fix fisheye effect
+                
                 depth *= math.cos(player_angle - cur_angle)
-                depth = max(depth, 0.0001)  # Prevent division by zero or tiny numbers
+                depth = max(depth, 0.0001)  
 
-                # Calculate projected wall slice height
+                
                 proj_height = PROJ_COEFF / depth
-                proj_height = min(proj_height, HEIGHT * 2)  # Prevent extreme heights
-
-                # Wall color shading based on depth
+                proj_height = min(proj_height, HEIGHT * 2)  
+            
                 c = 255 / (1 + depth * depth * 0.00002)
                 color = (c, c // 2, c // 3)
 
-                # Draw the vertical slice
+                
                 pygame.draw.rect(
                     sc,
                     color,
